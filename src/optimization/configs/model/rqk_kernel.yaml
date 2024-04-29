@@ -1,0 +1,14 @@
+name: rqk_kernel
+kernel_params:
+  alpha:
+    type: range
+    bounds: [0.1, 10]
+    value_type: float
+    log_scale: False
+  lengthscale:
+    type: range
+    bounds: [0.1, 30]
+    value_type: float
+    log_scale: False
+
+standardize: True

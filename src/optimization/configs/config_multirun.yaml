@@ -1,0 +1,48 @@
+# Main config file for a multirun experiment
+
+defaults:
+  - _self_
+  - bo_optim: ???     # This should be set when running the script
+  - data: ???         # This should be set when running the script
+  - model: ???        # This should be set when running the script
+
+gp_specs:
+  global_params:
+    noise_level:
+      type: range
+      bounds: [0.0, 1.0]
+      value_type: float
+      log_scale: False
+    mean:
+      type: range
+      bounds: [-1.0, 1.0]
+      value_type: float
+      log_scale: False
+  metric:
+    name: mll
+    minimize: False
+
+hydra:
+  job:
+    name: bo_optim
+    chdir: True
+  sweep:
+    # Change this to a specific dir
+    dir: ${oc.env:PROJECT_ROOT}/storage/experiments/${model.name}/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+  # Use this custom handler to set up the hydra logger
+  hydra_logging:
+    version: 1
+    root:
+      level: INFO
+      handlers: [ custom_file_handler ]
+    handlers:
+      custom_file_handler:
+        class: src.utils.logging_setup.SafeFileHandler
+        level: INFO
+        formatter: simple
+        filename: ${hydra.sweep.dir}/sweeper.log
+        mode: a
+    formatters:
+      simple:
+        format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'

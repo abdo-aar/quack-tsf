@@ -1,0 +1,14 @@
+name: synthetic
+type: trend_periodic
+specs:
+  num_time_steps: 240  # 240 = 5 * 4 * 12 => A year of data
+  noise_level: 0.5
+  trend_changes: 4
+  gen_seed: 1997
+  base_scale1: 1
+  base_scale2: 0.5
+  period1: 10
+
+train_test_specs:
+  test_steps_gap: 1
+  train_ratio: 0.8

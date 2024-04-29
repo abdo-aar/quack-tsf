@@ -1,0 +1,9 @@
+name: rbf_kernel
+kernel_params:
+  lengthscale:
+    type: range
+    bounds: [0.1, 30]
+    value_type: float
+    log_scale: False
+
+standardize: True

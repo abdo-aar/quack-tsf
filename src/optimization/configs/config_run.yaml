@@ -1,0 +1,34 @@
+# Main config file for a single run experiment
+
+defaults:
+  - _self_
+  - bo_optim: ???     # This should be set when running the script
+  - data: ???         # This should be set when running the script
+  - model: ???        # This should be set when running the script
+
+gp_specs:
+  global_params:
+    noise_level:
+      type: range
+      bounds: [0.0, 1.0]
+      value_type: float
+      log_scale: False
+    mean:
+      type: range
+      bounds: [-1.0, 1.0]
+      value_type: float
+      log_scale: False
+  metric:
+    name: mll
+    minimize: False
+
+hydra:
+  job:
+    name: bo_optim
+    chdir: True
+  run:
+    # Change this to a specific dir
+    dir: ${oc.env:PROJECT_ROOT}/storage/experiments/${model.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  callbacks:
+    save_job_info:    # Not available in the hydra's multirun feature
+      _target_: hydra.experimental.callbacks.PickleJobInfoCallback

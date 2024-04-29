@@ -1,0 +1,13 @@
+optim_hparams:
+  num_init_trials: 25
+  num_optimization_trials: 25
+  random_seed: 1997
+
+train_hparams:
+  window_length: 5  # = num_qubits. This may be the subject of a hyperparameter tuning
+  train_overlap: 2
+
+specs:
+  bo_torch_device: 'cuda'
+  logs:
+    direct_handling: True

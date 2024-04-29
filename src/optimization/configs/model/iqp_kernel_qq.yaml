@@ -1,0 +1,16 @@
+name: iqp_kernel_qq
+kernel_params:
+  alpha:
+    type: range
+    bounds: [0.0, 1.0]
+    value_type: float
+    log_scale: False
+
+iqp_torch_device: 'cpu'
+mod: 'qiskit.ibmq'
+standardize: True
+
+qq_inter: True
+
+instance:
+backend:

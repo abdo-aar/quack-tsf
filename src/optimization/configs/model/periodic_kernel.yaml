@@ -1,0 +1,14 @@
+name: periodic_kernel
+kernel_params:
+  period_length:
+    type: range
+    bounds: [5, 35]     # [min(period1, period2) - 5, max(period1, period2) + 5],   period1 = 10, period2 = 30
+    value_type: float
+    log_scale: False
+  lengthscale:
+    type: range
+    bounds: [0.1, 30]
+    value_type: float
+    log_scale: False
+
+standardize: True

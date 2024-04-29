@@ -1,0 +1,4 @@
+channel: 'ibm_quantum'
+token:                                            # Fill this to get access to the desired IBMQ machine
+instance: 'pinq-quebec-hub/iq-quantum/nad-qml'    # Fill this to get access to the desired IBMQ machine
+backend: 'ibm_quebec'  # Launch on the IBMQ machine

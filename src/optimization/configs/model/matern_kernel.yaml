@@ -1,0 +1,15 @@
+name: matern_kernel
+kernel_params:
+  nu:
+    type: choice
+    values: [0.5, 1.5, 2.5]
+    is_ordered: True
+    value_type: float
+    log_scale: False
+  lengthscale:
+    type: range
+    bounds: [0.1, 30]
+    value_type: float
+    log_scale: False
+
+standardize: True
